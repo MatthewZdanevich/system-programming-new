@@ -1,4 +1,4 @@
-#include "merge_sort.h"
+#include "merge/merge_sort.h"
 
 int main() {
     int array[] = {38, 27, 43, 3, 9, 82, 10};

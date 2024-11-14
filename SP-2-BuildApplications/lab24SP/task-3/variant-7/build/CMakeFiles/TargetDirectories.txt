@@ -1,0 +1,8 @@
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/CMakeFiles/edit_cache.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/CMakeFiles/rebuild_cache.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/server/CMakeFiles/server.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/server/CMakeFiles/edit_cache.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/server/CMakeFiles/rebuild_cache.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/client/CMakeFiles/client.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/client/CMakeFiles/edit_cache.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/variant-7/build/client/CMakeFiles/rebuild_cache.dir
