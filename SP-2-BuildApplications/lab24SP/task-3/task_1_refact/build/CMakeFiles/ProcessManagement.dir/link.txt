@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/ProcessManagement.dir/main.c.o CMakeFiles/ProcessManagement.dir/model/process_management.c.o CMakeFiles/ProcessManagement.dir/view/process_representation.c.o -o ProcessManagement 

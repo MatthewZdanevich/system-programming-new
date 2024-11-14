@@ -1,0 +1,3 @@
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/task_1_refact/build/CMakeFiles/ProcessManagement.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/task_1_refact/build/CMakeFiles/edit_cache.dir
+/home/rubler4ik/Рабочий стол/system-programming-new/SP-2-BuildApplications/lab24SP/task-3/task_1_refact/build/CMakeFiles/rebuild_cache.dir
