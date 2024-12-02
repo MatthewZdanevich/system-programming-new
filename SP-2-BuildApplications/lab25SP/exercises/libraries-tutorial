@@ -1,0 +1,136 @@
+
+########## Исходные файлы ##########
+
+---------- math.h (Создание заголовочного файла) ----------
+
+#ifndef MATH_H
+#define MATH_H
+
+double pow(double x, double n);
+
+#endif
+
+---------- math.c (Создание файла с реализацией) ----------
+
+double pow(double x, double n) {
+	int result = x;
+	for (int i = 1; i < n; i++) {
+		result *= x;
+	}
+	return result;
+}
+
+---------- main.c (Создание основной программы) ----------
+
+#include <stdio.h>
+#include "math.h"
+
+int main() {
+	int base, power, result;
+
+	printf("Enter the base of the number: ");
+	scanf("%d", &base);
+
+	printf("Enter the power of the number: ");
+        scanf("%d", &power);
+
+	result = pow(base, power);
+	printf("%d ^ %d = %d\n", base, power, result);
+
+	return 0;
+}
+
+########## Статические библиотеки ##########
+
+---------- libmath.a (Создание статической библиотеки) ----------
+
+// Компиляция файла с реализацией в объектный файл
+gcc -c math.c -o math.o
+
+// Создание статической библиотеки (архива)
+ar rcs libmath.a math.o
+
+---------- main (Создание исполняемого файла) ----------
+
+// Компиляция файла основной программы в объектный файл
+// Связывание объектного файла с внешней библиотекой
+// В результате создаётся исполняемый файл программы
+gcc main.c -L. -lmath -o main
+
+########## Динамические библиотеки (статический вызов) ##########
+
+---------- libmath.so (Создание динамической библиотеки) ----------
+
+// Компиляция файла с реализацией в объектный файл с поддержкой позиционно-независимого кода
+gcc -fPIC -c math.c -o math.o
+
+// Создание динамической библиотеки
+gcc -shared -o libmath.so math.o
+
+---------- main (Создание исполняемого файла) ----------
+
+// С помощью переменной окружения LD_LIBRARY_PATH указываем директорию, в которой
+// динамический линковщик должен искать динамические библиотеки
+export LD_LIBRARY_PATH=/home/matthew-zdanevich/Документы/sp-practice/
+2-SP-Build-Applications/lab25SP/exercises/exercise-0-2:$LD_LIBRARY_PATH
+
+// Компиляция файла основной программы в объектный файл
+// Связывание объектного файла с внешней библиотекой
+// В результате создаётся исполняемый файл программы
+gcc main.c -L. -lmath -o main
+
+########## Динамические библиотеки (динамический вызов) ##########
+
+---------- main.c () ----------
+
+#include <stdio.h>
+#include <dlfcn.h>
+
+int main() {
+    int base, power, result;
+
+    printf("Enter the base of the number: ");
+    scanf("%d", &base);
+
+    printf("Enter the power of the number: ");
+    scanf("%d", &power);
+
+    // Load the library
+    void *handle = dlopen("./libmath.so", RTLD_NOW);
+    if (!handle) {
+        fprintf(stderr, "Error loading library: %s\n", dlerror());
+        return 1;
+    }
+
+    // Get the address of the pow function
+    double (*pow_func)(double, double) = (double (*)(double, double))dlsym(handle, "pow");
+    if (!pow_func) {
+        fprintf(stderr, "Error finding symbol: %s\n", dlerror());
+        dlclose(handle);
+        return 1;
+    }
+
+    // Call the function
+    result = (int)pow_func(base, power);
+    printf("%d ^ %d = %d\n", base, power, result);
+
+    // Close the library
+    dlclose(handle);
+
+    return 0;
+}
+
+---------- libmath.so (Создание динамической библиотеки) ----------
+
+// Компиляция файла с реализацией в объектный файл с поддержкой позиционно-независимого кода
+gcc -fPIC -c math.c -o math.o
+
+// Создание динамической библиотеки
+gcc -shared -o libmath.so math.o
+
+---------- main (Создание исполняемого файла) ----------
+
+// Компиляция файла основной программы в объектный файл
+// Связывание объектного файла с внешней библиотекой
+// В результате создаётся исполняемый файл программы
+gcc main.c -L. -lmath -o main
